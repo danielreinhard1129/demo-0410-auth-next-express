@@ -2,8 +2,7 @@ import * as Yup from "yup";
 import YupPassword from "yup-password";
 YupPassword(Yup);
 
-export const RegisterSchema = Yup.object().shape({
-  name: Yup.string().required("Name is required"),
+export const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is required"),
   password: Yup.string()
     .required("Password is required")
