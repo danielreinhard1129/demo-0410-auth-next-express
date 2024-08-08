@@ -28,7 +28,7 @@ const useLogin = () => {
 
       toast.success("login success");
 
-      router.push("/");
+      router.push(`/`);
     } catch (error) {
       if (error instanceof AxiosError) {
         toast.error(error.response?.data || "Something went wrong!");
