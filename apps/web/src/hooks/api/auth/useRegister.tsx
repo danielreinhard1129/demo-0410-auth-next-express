@@ -20,7 +20,7 @@ const useRegister = () => {
   const register = async (payload: RegisterArgs) => {
     setIsLoading(true);
     try {
-      await axiosInstance.post("/api/auth/register", {
+      await axiosInstance.post("/auth/register", {
         name: payload.name,
         email: payload.email,
         password: payload.password,

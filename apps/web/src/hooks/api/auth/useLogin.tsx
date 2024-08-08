@@ -22,7 +22,7 @@ const useLogin = () => {
   const login = async (payload: LoginPayload) => {
     setIsLoading(true);
     try {
-      const { data } = await axiosInstance.post("/api/auth/login", payload);
+      const { data } = await axiosInstance.post("/auth/login", payload);
 
       dispatch(loginAction(data));
 
