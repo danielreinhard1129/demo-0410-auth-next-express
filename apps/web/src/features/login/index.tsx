@@ -10,7 +10,7 @@ import useLogin from "@/hooks/api/auth/useLogin";
 import Link from "next/link";
 
 const LoginPage = () => {
-  const { login, isLoading } = useLogin();
+  const { mutateAsync: login, isPending } = useLogin();
 
   const formik = useFormik({
     initialValues: {
@@ -67,11 +67,11 @@ const LoginPage = () => {
               </Link>
             </div>
 
-            <Button className="mt-6 w-full" disabled={isLoading}>
-              {isLoading ? "Loading..." : "Submit"}
+            <Button className="mt-6 w-full" disabled={isPending}>
+              {isPending ? "Loading..." : "Submit"}
             </Button>
 
-            <Link href="/register" className="flex justify-center text-xs mt-4">
+            <Link href="/register" className="mt-4 flex justify-center text-xs">
               Dont have an account ? Register here
             </Link>
           </form>
