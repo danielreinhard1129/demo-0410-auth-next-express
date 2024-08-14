@@ -13,7 +13,7 @@ import { SampleRouter } from './routers/sample.router';
 import { AuthRouter } from './routers/auth.router';
 
 export default class App {
-  private app: Express;
+  public app: Express;
 
   constructor() {
     this.app = express();
@@ -42,7 +42,6 @@ export default class App {
     this.app.use(
       (err: Error, req: Request, res: Response, next: NextFunction) => {
         if (req.path.includes('/api/')) {
-          console.error('Error : ', err.stack);
           res.status(500).send(err.message);
         } else {
           next();
