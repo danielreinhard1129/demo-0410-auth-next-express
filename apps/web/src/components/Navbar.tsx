@@ -1,12 +1,10 @@
 "use client";
 
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { logoutAction } from "@/redux/slices/userSlice";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 
 const Navbar = () => {
-  const { id, name } = useAppSelector((state) => state.user);
-  const dispatch = useAppDispatch();
+  const session = useSession();
 
   return (
     <nav className="sticky top-0 bg-transparent">
@@ -18,10 +16,10 @@ const Navbar = () => {
             <h3>Home</h3>
             <h3>Write</h3>
             <h3>Profile</h3>
-            {id ? (
+            {session.data?.user.id ? (
               <>
-                <Link href="/profile">{name}</Link>
-                <h3 onClick={() => dispatch(logoutAction())}>Logout</h3>
+                <Link href="/profile">{session.data.user.name}</Link>
+                <h3 onClick={() => signOut()}>Logout</h3>
               </>
             ) : (
               <Link href="/login">Login</Link>

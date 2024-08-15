@@ -1,11 +1,11 @@
 "use client";
 
-import AuthGuard from "@/hoc/AuthGuard";
-import { useAppSelector } from "@/redux/hooks";
+import { useSession } from "next-auth/react";
 
 const Homepage = () => {
-  const { name } = useAppSelector((state) => state.user);
-  return <div>Hello, {name}</div>;
+  const session = useSession();
+
+  return <div>Hello, {session.data?.user.name}</div>;
 };
 
-export default AuthGuard(Homepage);
+export default Homepage;

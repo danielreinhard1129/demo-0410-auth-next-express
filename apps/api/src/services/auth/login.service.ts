@@ -29,6 +29,16 @@ export const loginService = async (body: Pick<User, 'email' | 'password'>) => {
     const { password: pass, ...userWithoutPassword } = user;
 
     return { ...userWithoutPassword, token };
+
+    {
+      id: 1;
+      name: 'budi';
+      email: 'budi@mail.com';
+      provider: 'CREDENTIALS';
+      createdAt: '2024-01-01:12321312231';
+      updatedAt: '2024-01-01:12321312231';
+      token: 'eysasda2131asdasdasdasdadada';
+    }
   } catch (error) {
     throw error;
   }
