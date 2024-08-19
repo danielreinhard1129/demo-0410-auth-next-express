@@ -1,3 +1,4 @@
+import { createBlogService } from '@/services/blog/create-blog.service';
 import { getEventsService } from '@/services/blog/get-events.service';
 import { NextFunction, Request, Response } from 'express';
 
@@ -13,6 +14,20 @@ export class BlogController {
       };
 
       const result = await getEventsService(query);
+      return res.status(200).send(result);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async createEvent(req: Request, res: Response, next: NextFunction) {
+    try {
+      const result = await createBlogService(
+        req.body,
+        req.file!,
+        Number(res.locals.user.id),
+      );
+
       return res.status(200).send(result);
     } catch (error) {
       next(error);
