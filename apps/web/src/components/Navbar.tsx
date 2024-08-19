@@ -10,14 +10,15 @@ const Navbar = () => {
     <nav className="sticky top-0 bg-transparent">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between py-2">
-          <h1 className="cursor-pointer text-xl font-bold">Logo</h1>
+          <Link href="/" className="text-xl font-bold">
+            Logo
+          </Link>
 
           <div className="flex cursor-pointer items-center gap-8 font-medium">
-            <h3>Home</h3>
-            <h3>Write</h3>
-            <h3>Profile</h3>
-            {session.data?.user.id ? (
+            <Link href="/">Home</Link>
+            {session.data ? (
               <>
+                <Link href="/write">Write</Link>
                 <Link href="/profile">{session.data.user.name}</Link>
                 <h3 onClick={() => signOut()}>Logout</h3>
               </>

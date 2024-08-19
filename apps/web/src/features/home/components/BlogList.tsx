@@ -47,6 +47,7 @@ const BlogList = () => {
           total={data.meta.total}
           take={data.meta.take}
           onPageChange={onPageChange}
+          page={page}
         />
       </div>
     </>

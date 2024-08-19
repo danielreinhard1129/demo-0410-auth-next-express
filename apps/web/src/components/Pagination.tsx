@@ -8,9 +8,15 @@ interface PaginationProps {
   onPageChange: ({ selected }: { selected: number }) => void;
   total: number;
   take: number;
+  page: number;
 }
 
-const Pagination: FC<PaginationProps> = ({ take, total, onPageChange }) => {
+const Pagination: FC<PaginationProps> = ({
+  take,
+  total,
+  page,
+  onPageChange,
+}) => {
   return (
     <ReactPaginate
       breakLabel={<span>...</span>}
@@ -22,6 +28,7 @@ const Pagination: FC<PaginationProps> = ({ take, total, onPageChange }) => {
       pageLinkClassName="p-2 rounded-lg"
       activeLinkClassName="bg-black text-white"
       onPageChange={onPageChange}
+      forcePage={Number(page) - 1}
     />
   );
 };
